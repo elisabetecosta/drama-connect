@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
     title: 'Drama Connect',
-    description: 'Drama Connect'
+    description: 'Connect with other drama fans'
 }
 
 export default function RootLayout({
