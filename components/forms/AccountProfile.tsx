@@ -1,7 +1,7 @@
 "use client"
 
 import { ChangeEvent, useState } from "react"
-import { usePathname, useRouter } from "next/navigation"  
+import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 
 import { useForm } from "react-hook-form"
@@ -18,6 +18,7 @@ import {
     FormField,
     FormItem,
     FormLabel,
+    FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -62,15 +63,15 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
         const fileReader = new FileReader()
 
-        if(e.target.files && e.target.files.length > 0) {
-            
+        if (e.target.files && e.target.files.length > 0) {
+
             const file = e.target.files[0]
             setFiles(Array.from(e.target.files))
 
             if (!file.type.includes('image')) return
 
             fileReader.onload = async (event) => {
-                
+
                 const imageDataUrl = event.target?.result?.toString() || ''
 
                 fieldChange(imageDataUrl)
@@ -82,7 +83,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
 
     const onSubmit = async (values: z.infer<typeof UserValidation>) => {
-        
+
         const blob = values.profile_photo
 
         const hasImageChanged = isBase64Image(blob)
@@ -154,6 +155,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     onChange={(e) => handleImage(e, field.onChange)}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -174,6 +176,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -194,6 +197,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -214,6 +218,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
