@@ -8,7 +8,6 @@ import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
 
-
 export async function createCommunity(
   id: string,
   name: string,
@@ -50,7 +49,6 @@ export async function createCommunity(
   }
 }
 
-
 export async function fetchCommunityDetails(id: string) {
   try {
     connectToDB();
@@ -71,7 +69,6 @@ export async function fetchCommunityDetails(id: string) {
     throw error;
   }
 }
-
 
 export async function fetchCommunityPosts(id: string) {
   try {
@@ -105,7 +102,6 @@ export async function fetchCommunityPosts(id: string) {
     throw error;
   }
 }
-
 
 export async function fetchCommunities({
   searchString = "",
@@ -163,7 +159,6 @@ export async function fetchCommunities({
   }
 }
 
-
 export async function addMemberToCommunity(
   communityId: string,
   memberId: string
@@ -206,7 +201,6 @@ export async function addMemberToCommunity(
   }
 }
 
-
 export async function removeUserFromCommunity(
   userId: string,
   communityId: string
@@ -248,7 +242,6 @@ export async function removeUserFromCommunity(
   }
 }
 
-
 export async function updateCommunityInfo(
   communityId: string,
   name: string,
@@ -275,7 +268,6 @@ export async function updateCommunityInfo(
     throw error;
   }
 }
-
 
 export async function deleteCommunity(communityId: string) {
   try {
