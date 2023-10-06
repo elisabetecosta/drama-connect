@@ -1,8 +1,11 @@
 ## TODO
 
-- Add search bar with search functionality to search page
-- Add number of replies to threads in home page
+- Add org bio edit like in profile edit
 - Add like feature
 - Add repost feature
 - Add share feature
+- Add replies and tagged to profile page
+- Add tags to profile page
+- Add requests to community page
+
 - Add content to right sidebar
