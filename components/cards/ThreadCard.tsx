@@ -39,6 +39,16 @@ function ThreadCard({
   comments,
   isComment,
 }: Props) {
+
+  const toggleLikeThread = async () => {
+
+    // check if user is authenticated
+    // fetch toggleLike
+    // show in the ui a red heart and number, or remove color and decrease number
+    console.log("liked")
+  }
+  
+
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
@@ -77,11 +87,12 @@ function ThreadCard({
                   width={24}
                   height={24}
                   className='cursor-pointer object-contain'
+                  onClick={toggleLikeThread}
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
                     src='/assets/reply.svg'
-                    alt='heart'
+                    alt='reply'
                     width={24}
                     height={24}
                     className='cursor-pointer object-contain'
@@ -89,14 +100,14 @@ function ThreadCard({
                 </Link>
                 <Image
                   src='/assets/repost.svg'
-                  alt='heart'
+                  alt='repost'
                   width={24}
                   height={24}
                   className='cursor-pointer object-contain'
                 />
                 <Image
                   src='/assets/share.svg'
-                  alt='heart'
+                  alt='share'
                   width={24}
                   height={24}
                   className='cursor-pointer object-contain'

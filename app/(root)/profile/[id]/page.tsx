@@ -10,12 +10,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 
+
 async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) return null;
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
+
 
   return (
     <section>
@@ -50,18 +52,29 @@ async function Page({ params }: { params: { id: string } }) {
               </TabsTrigger>
             ))}
           </TabsList>
+
           {profileTabs.map((tab) => (
             <TabsContent
               key={`content-${tab.label}`}
               value={tab.value}
               className='w-full text-light-1'
             >
-              {/* @ts-ignore */}
-              <ThreadsTab
-                currentUserId={user.id}
-                accountId={userInfo.id}
-                accountType='User'
-              />
+              {tab.value === "threads" ? (
+                // @ts-ignore
+                <ThreadsTab
+                  currentUserId={user.id}
+                  accountId={userInfo.id}
+                  accountType='User'
+                />
+              ) : tab.value === "tagged" ? (
+                // Render the tagged threads or message if there are no tagged threads
+                <section className='mt-9 flex flex-col gap-10'>
+
+                    <p>You have not been tagged in any threads yet.</p>
+                  
+                </section>
+              ) : null /* Handle other tabs as needed, for now we exclude "Replies" tab */
+              }
             </TabsContent>
           ))}
         </Tabs>

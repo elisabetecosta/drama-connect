@@ -1,0 +1,43 @@
+https://www.youtube.com/watch?v=_W3R2VwRyF4
+
+
+//////////////thread.model
+likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+
+
+
+//////////////thread.actions
+export async function toggleLikeThread(threadId: string, userId: string) {
+  try {
+    connectToDB();
+
+    // Find the thread by ID
+    const thread = await Thread.findById(threadId);
+
+    if (!thread) {
+      throw new Error("Thread not found");
+    }
+
+    // Check if the user has already liked the thread
+    const index = thread.likes.indexOf(userId);
+
+    if (index === -1) {
+      // User hasn't liked the thread, so add the like
+      thread.likes.push(userId);
+    } else {
+      // User has liked the thread, so remove the like
+      thread.likes.splice(index, 1);
+    }
+
+    await thread.save();
+
+    return thread;
+  } catch (error) {
+    throw new Error(`Failed to toggle like for thread: ${error.message}`);
+  }
+}

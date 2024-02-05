@@ -9,3 +9,7 @@
 - Add requests to community page
 
 - Add content to right sidebar
+
+
+like, follow and notifications:
+https://www.youtube.com/watch?v=ytkG7RT6SvU
