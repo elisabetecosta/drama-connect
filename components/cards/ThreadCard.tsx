@@ -40,6 +40,7 @@ function ThreadCard({
   isComment,
 }: Props) {
 
+  /*
   const toggleLikeThread = async () => {
 
     // check if user is authenticated
@@ -47,6 +48,7 @@ function ThreadCard({
     // show in the ui a red heart and number, or remove color and decrease number
     console.log("liked")
   }
+  */
   
 
   return (
@@ -87,7 +89,7 @@ function ThreadCard({
                   width={24}
                   height={24}
                   className='cursor-pointer object-contain'
-                  onClick={toggleLikeThread}
+                  // onClick={toggleLikeThread}
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
